@@ -6,15 +6,7 @@ Ce projet montre comment déployer automatiquement une machine virtuelle (VM) su
 
 ## 📁 Structure du Projet
 
-openstack-project/
-├── heat-templates/
-│ └── infrastructure.yaml # Template Heat décrivant l'infrastructure
-├── my_key.pem # Clé privée SSH
-├── my_key.pub # Clé publique à ajouter dans OpenStack
-├── puppet/
-│ └── site.pp # Fichier manifeste Puppet pour la configuration
-└── scripts/
-└── deploy.sh # Script de déploiement automatisé
+<pre> <code> 📁 Structure du Projet ``` openstack-project/ ├── heat-templates/ │ └── infrastructure.yaml ├── my_key.pem ├── my_key.pub ├── puppet/ │ └── site.pp └── scripts/ └── deploy.sh ``` </code> </pre>
 
 ## ⚙️ Prérequis
 
