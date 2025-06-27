@@ -1,5 +1,3 @@
-# openstack-heat-puppet-deployment
-
 # Déploiement OpenStack avec Heat et Puppet
 
 Ce projet montre comment déployer automatiquement une machine virtuelle (VM) sur un cloud privé OpenStack à l’aide de Heat (Infrastructure as Code) et configurer cette VM à l’aide de Puppet.
