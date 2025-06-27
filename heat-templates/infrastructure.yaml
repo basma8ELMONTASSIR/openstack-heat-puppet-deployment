@@ -1,0 +1,39 @@
+heat_template_version: 2016-10-14
+
+description: Simple Infrastructure with Puppet auto-configuration
+
+parameters:
+  key_name:
+    type: string
+    description: SSH key to access the VM
+
+resources:
+  my_network:
+    type: OS::Neutron::Net
+    properties:
+      name: my_network
+
+  my_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      network_id: { get_resource: my_network }
+      cidr: 192.168.10.0/24
+      ip_version: 4
+
+  my_instance:
+    type: OS::Nova::Server
+    properties:
+      name: puppet-vm
+      image: Fedora-Cloud-Base-37-1.7.x86_64
+      flavor: m1.small
+      key_name: { get_param: key_name }
+      networks:
+        - network: { get_resource: my_network }
+      user_data_format: RAW
+      user_data: |
+        #!/bin/bash
+        apt update
+        apt install -y puppet
+        echo "package { 'apache2': ensure => installed, }" > /etc/puppet/init.pp
+        puppet apply /etc/puppet/init.pp
+
