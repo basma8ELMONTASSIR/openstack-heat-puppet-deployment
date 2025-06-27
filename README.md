@@ -26,35 +26,35 @@ openstack-project/
 
 1. **Générer une paire de clés SSH :**
 	```bash 
-		ssh-keygen -t rsa -b 2048 -f my_key
+	ssh-keygen -t rsa -b 2048 -f my_key
 2. **Ajouter la clé publique dans OpenStack :**
-
+	```bash
 	openstack keypair create --public-key my_key.pub my_key
 3. **Charger les identifiants OpenStack :**
-
-source openrc
+	```bash
+	source openrc
 
 
 4. **Déployer l’infrastructure avec Heat :**
-
-./scripts/deploy.sh
+	```bash
+	./scripts/deploy.sh
 
 
 5. **Lister les ressources déployées (optionnel) :**
-
-openstack stack list
-openstack server list
+	```bash
+	openstack stack list
+	openstack server list
 
 6. **Se connecter à la VM via SSH :**
-
-ssh -i my_key.pem fedora@<ADRESSE_IP_FLOTTANTE>
+	```bash
+	ssh -i my_key.pem fedora@<ADRESSE_IP_FLOTTANTE>
 
 
 7. **Configurer la VM avec Puppet (depuis la VM) :**
-
-sudo dnf install -y puppet
-sudo cp site.pp /etc/puppet/manifests/
-sudo puppet apply /etc/puppet/manifests/site.pp
+	```bash
+	sudo dnf install -y puppet
+	sudo cp site.pp /etc/puppet/manifests/
+	sudo puppet apply /etc/puppet/manifests/site.pp
 
 ## ✅ Résultat Attendu
 
